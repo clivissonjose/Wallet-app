@@ -5,6 +5,7 @@
         Wallet register
     </title>
     <link rel="stylesheet" href="../../../style.css">
+    <script src="index2.js"></script>
     
   </head>
   <body>
@@ -15,28 +16,34 @@
         <div class="content-container">
            <img class="img-logo" 
             src="../../imagens/preview.png" alt="logo">
-            <h3 class="full-width text-left mt larger">Novo cadastro </h3>
+            <h3 class="full-width text-left mt larger">Novo cadastro</h3>
             <p class="mt-small">Insira seu nome e E-mail para ter acesso ao Wallet app </p>
-
+        
+            <form id="form-register">
+               
             <label class="mt large" for="input-name">Nome:</label>
             <input
             class="mt-smaller"
              id="input-name"
              placeholder="Insira seu nome" 
              type="text"
-             name="input-name">
+             name="input-name"
+             required >
              
             <label class="mt large" for="input-email">
                    E-mail:</label>
             <input 
             class="mt-smaller"
             id="input-email"
-            placeholder="@email.exmplo"
+            placeholder="@email.exemplo"
             type="email"
-            name="input-email">
+            name="input-email"
+            required >
 
-            <button class="mt large 
+            <button type="submit" class="mt large 
             full-width">cadastrar</button>
+
+            </form>
 
             <a class="mt larger" href="../../../index.html"> Já tem conta? Clique 
                para fazer o login</a>
@@ -44,7 +51,6 @@
         </div>
 
     </div>
-
 
   </div>
 
