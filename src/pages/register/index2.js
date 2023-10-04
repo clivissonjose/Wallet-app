@@ -2,8 +2,8 @@ const onCallRegister = async (email, name) => {
 
  try {
   const data = {
-    email,
-    name
+    email: email,
+    name: name
   }
   const response = await fetch("https://mp-wallet-app-api.herokuapp.com/users",{
 
