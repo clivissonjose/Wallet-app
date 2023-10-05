@@ -1,3 +1,107 @@
+const userExpensesData = (data) => {
+
+   const totalItens = data.length 
+
+   const revenues = data
+   .filter((item) => Number(item.value) > 0)
+   .reduce((acc, item) => acc + Number(item.value), 0)
+   
+   const expenses = data 
+   .filter((item) => Number(item.value) < 0)
+   .reduce((acc, item) => acc + Number(item.value), 0)
+
+   const total = revenues -(-expenses)
+
+   const dados = {
+      totalItens,
+      revenues, 
+      expenses,
+      total
+   }
+console.log(dados)
+   // total of finances 
+
+   const totalFinances = document.getElementById("finance-card-1")
+
+   const totalFinancesElement = document.createElement('h1')
+   const totalFinancesText = document.createTextNode(totalItens)
+   totalFinancesElement.appendChild(totalFinancesText)
+   totalFinances.appendChild(totalFinancesElement)
+
+   // total  revenues 
+
+   const  totalRevenues = document.getElementById("finance-card-2")
+
+   const totalRevenuesElement = document.createElement('h1')
+   const totalRevenuesText = document.createTextNode(
+      new Intl.NumberFormat("pt-br", {
+         style: "currency",
+         currency: "BRL",
+      }).format(revenues)
+
+      // or to be more simple: const totalRevenuesText = document.createTextNode(revenues)
+   )
+   totalRevenuesElement.appendChild(totalRevenuesText)
+   totalRevenues.appendChild(totalRevenuesElement)
+
+   // user`s spendings 
+
+   const totalSpending = document.getElementById("finance-card-3")
+
+   const spendingElement = document.createElement("h1")
+   const spendingText = document.createTextNode(
+      new Intl.NumberFormat("pt-br", {
+         style:"currency",
+         currency: "BRL",
+      }).format(expenses)
+   )
+   spendingElement.appendChild(spendingText)
+   totalSpending.appendChild(spendingElement)
+
+   // user gains or loses 
+
+   const balance = document.getElementById('finance-card-4')
+
+   const balanceElement = document.createElement("h1")
+   const balanceText = document.createTextNode(
+      new Intl.NumberFormat("pt-br", {
+         style:"currency",
+         currency:"BRL"
+      }).format(total)
+   )
+   balanceElement.appendChild(balanceText)
+   balance.appendChild(balanceElement)
+
+}
+
+const userFinances = async ()  => {
+
+   const email = localStorage.getItem("@WalletApp:UserEmail")
+
+   try {
+      const date = "2022-12-16"
+      const result = await fetch(`https://mp-wallet-app-api.herokuapp.com/finances?date=${date}`, {
+
+      method: 'GET',
+      headers: {
+         email: email
+      }
+
+      })
+
+      const data = await result.json()
+
+      console.log(data)
+
+      userExpensesData(data)
+
+
+   } catch (error) {
+      return { error }
+   }
+
+}
+
 const userInfomation = () => {
 
     const email = localStorage.getItem("@WalletApp:UserEmail")
@@ -26,13 +130,10 @@ const userInfomation = () => {
    nameElement.appendChild(nameText)
    UserLetter.appendChild(nameElement)
 
-   
-
-
 }
-
 
 window.onload = () => {
   const email = localStorage.getItem("@WalletApp:UserEmail")
    userInfomation()
+   userFinances()
 }
