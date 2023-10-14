@@ -12,17 +12,9 @@ const userExpensesData = (data) => {
 
    const total = revenues -(-expenses)
 
-   const dados = {
-      totalItens,
-      revenues, 
-      expenses,
-      total
-   }
-console.log(dados.total)
    // total of finances 
 
    const totalFinances = document.getElementById("finance-card-1")
-
    const totalFinancesElement = document.createElement('h1')
    const totalFinancesText = document.createTextNode(totalItens)
    totalFinancesElement.appendChild(totalFinancesText)
@@ -31,7 +23,6 @@ console.log(dados.total)
    // total  revenues 
 
    const  totalRevenues = document.getElementById("finance-card-2")
-
    const totalRevenuesElement = document.createElement('h1')
    const totalRevenuesText = document.createTextNode(
       new Intl.NumberFormat("pt-br", {
@@ -47,7 +38,6 @@ console.log(dados.total)
    // user`s spendings 
 
    const totalSpending = document.getElementById("finance-card-3")
-
    const spendingElement = document.createElement("h1")
    const spendingText = document.createTextNode(
       new Intl.NumberFormat("pt-br", {
@@ -61,7 +51,6 @@ console.log(dados.total)
    // user gains or loses 
 
    const balance = document.getElementById('finance-card-4')
-
    const balanceElement = document.createElement("h1")
    const balanceText = document.createTextNode(
       new Intl.NumberFormat("pt-br", {
@@ -69,6 +58,11 @@ console.log(dados.total)
          currency:"BRL"
       }).format(total)
    )
+   if ( total >= 0){
+      balanceElement.style.color = "#5936CD";
+   }else {
+      balanceElement.style.color = "red"
+   }
    balanceElement.appendChild(balanceText)
    balance.appendChild(balanceElement)
 
