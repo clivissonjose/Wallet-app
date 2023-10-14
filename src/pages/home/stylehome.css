@@ -4,7 +4,8 @@
    align-items: flex-start;
    justify-content: flex-start;
    width: 100vw;
-   height: 100vh;
+   height: auto;
+   min-height: 100vh;
    background-color: #e7e7ea;
 }
 
@@ -16,7 +17,6 @@
   width: 100%;
   height: 72px;
   background-color: #fefefe;
-
   padding: 24px 112px;
   box-sizing: border-box;
 }
@@ -24,17 +24,16 @@
 .nav-bar-logo {
   width: 90px;
   height: 50px;
+  border-radius: 10px;
 }
 
 .navbar-user-container {
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 280px;
   height: 100%;
-
 }
 
 .user-letter {
@@ -55,7 +54,6 @@
   width: 100%;
   padding: 48px 112px;
   box-sizing: border-box;
-  
 }
 
 .finances-card {
@@ -66,5 +64,80 @@
   width: 280px;
   height: 140px;
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 24px;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0px 112px;
+  box-sizing: border-box;
+  
+}
+
+button.small {
+  width: 90px;
+  height: 36px;
+  color: #000000;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+
+
+.table-content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #fefefe;
+  border-radius: 20px;
+  height: 750px;
+  box-sizing: border-box;
+  padding: 24px;
+  
+}
+.table-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 24px;
+}
+
+table {
+  width: 100%;
+}
+
+
+th {
+  text-align: left;
+  color: #7c7c7c;
+}
+
+th.center {
+  text-align: center;
+}
+
+th.right {
+  text-align: right;
+}
+
+td {
+  color: #7c7c7c;
+
+}
+
+td.center {
+    text-align: center;
+}
+
+td.right {
+  text-align: right;
 }

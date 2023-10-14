@@ -18,7 +18,7 @@ const userExpensesData = (data) => {
       expenses,
       total
    }
-console.log(dados)
+console.log(dados.total)
    // total of finances 
 
    const totalFinances = document.getElementById("finance-card-1")
