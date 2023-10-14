@@ -1,3 +1,62 @@
+const RenderTable = (data) => {
+
+   const table = document.getElementById("table-finances")
+
+   data.map ((item) => {
+
+      const tableRow = document.createElement("tr")
+      tableRow.className = "mt larger"
+      // title 
+
+      const titleTd = document.createElement("td")
+      const titleText = document.createTextNode(item.title)
+      titleTd.appendChild(titleText)
+      tableRow.appendChild(titleTd)
+
+      // category 
+
+      const categoryTd = document.createElement("td")
+      const categoryText = document.createTextNode(item.name)
+      categoryTd.appendChild(categoryText)
+      tableRow.appendChild(categoryTd)
+
+      // date 
+
+      const datetd = document.createElement("td")
+      const dateText = document.createTextNode(
+         new Date(item.date).toLocaleDateString()
+      )
+      datetd.appendChild(dateText)
+      tableRow.appendChild(datetd)
+
+      // value 
+
+      const valueTd = document.createElement("td")
+      const valueText = document.createTextNode(
+         new Intl.NumberFormat("pt-br", {
+            style: "currency",
+            currency: "BRL",
+         }).format(item.value)
+      )
+      valueTd.className = "center"
+      valueTd.appendChild(valueText)
+      tableRow.appendChild(valueTd)
+
+      // delete
+
+      const deleteTd = document.createElement("td")
+      deleteTd.className = "right"
+      const deleteText = document.createTextNode("Deletar")
+      deleteTd.appendChild(deleteText)
+      tableRow.appendChild(deleteTd)
+
+      // table add tableRow
+
+      table.appendChild(tableRow)
+
+   })
+
+}
 const userExpensesData = (data) => {
 
    const totalItens = data.length 
@@ -86,9 +145,8 @@ const userFinances = async ()  => {
       const data = await result.json()
 
       console.log(data)
-
       userExpensesData(data)
-
+      RenderTable(data)
 
    } catch (error) {
       return { error }
