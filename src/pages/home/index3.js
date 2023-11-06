@@ -5,18 +5,20 @@ const RenderTable = (data) => {
    data.map ((item) => {
 
       const tableRow = document.createElement("tr")
-      tableRow.className = "mt larger"
+      tableRow.className = "mt"
+
       // title 
 
       const titleTd = document.createElement("td")
-      const titleText = document.createTextNode(item.title)
+      const titleText =document.createTextNode(item.title)
       titleTd.appendChild(titleText)
       tableRow.appendChild(titleTd)
 
       // category 
 
       const categoryTd = document.createElement("td")
-      const categoryText = document.createTextNode(item.name)
+      const categoryText=
+      document.createTextNode(item.name)
       categoryTd.appendChild(categoryText)
       tableRow.appendChild(categoryTd)
 
@@ -38,6 +40,12 @@ const RenderTable = (data) => {
             currency: "BRL",
          }).format(item.value)
       )
+
+      if ( item.value > 0){
+         valueTd.style.color = "green"
+      } else if ( item.value < 0){
+         valueTd.style.color = "red"
+      }
       valueTd.className = "center"
       valueTd.appendChild(valueText)
       tableRow.appendChild(valueTd)
@@ -185,7 +193,7 @@ const userInfomation = () => {
 }
 
 window.onload = () => {
-  const email = localStorage.getItem("@WalletApp:UserEmail")
+    const email = localStorage.getItem("@WalletApp:UserEmail")
    userInfomation()
    userFinances()
 }

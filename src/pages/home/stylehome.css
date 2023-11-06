@@ -86,8 +86,6 @@ button.small {
   border-radius: 8px;
 }
 
-
-
 .table-content-container {
   display: flex;
   flex-direction: column;
@@ -101,6 +99,7 @@ button.small {
   padding: 24px;
   
 }
+
 .table-header {
   display: flex;
   flex-direction: row;
@@ -114,7 +113,6 @@ button.small {
 table {
   width: 100%;
 }
-
 
 th {
   text-align: left;
