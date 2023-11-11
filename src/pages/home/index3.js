@@ -192,8 +192,48 @@ const userInfomation = () => {
 
 }
 
+const onLoadCategories = async () =>{
+   try {
+
+   const categoriesSelect  = document.getElementById("category")
+   const response = await fetch('https://mp-wallet-app-api.herokuapp.com/categories')
+   const categoriesResult = await response.json()
+
+  categoriesResult.map((category) => {
+
+     const option = document.createElement("option")
+     const optionText =  document.createTextNode(category.name)
+     option.id = `category_${category.id}`
+     option.value = category.id
+     option.appendChild(optionText)
+     categoriesSelect.append(option)
+
+  })
+
+   console.log(categoriesResult)
+
+   } catch (error) {
+      alert("Erro ao cadastrar categoria!")
+      return { error }
+    
+   }
+
+}
+
+const onOpenModal = () => {
+   const modal = document.getElementById("modal")
+   modal.style.display = "flex"
+}
+
+const onCloseModal = () => {
+   const modal = document.getElementById("modal")
+   modal.style.display = "none"
+}
+
 window.onload = () => {
+
     const email = localStorage.getItem("@WalletApp:UserEmail")
    userInfomation()
    userFinances()
+   onLoadCategories()
 }

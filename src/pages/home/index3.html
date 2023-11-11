@@ -44,7 +44,7 @@
       <div class="table-content-container">
          <div class="table-header">
             <h2>Últimos lançamentos</h2>
-            <button class="small" >Adicionar</button>
+            <button onclick="onOpenModal()" class="small" >Adicionar</button>
          </div>
             <table id="table-finances">
                <tr>
@@ -60,8 +60,61 @@
          
       </div>
      </div>
-
    </div>
-   
+   <div id="modal" class="modal-background">
+      <div class="modal-content">
+          <div class="modal-content-header">
+            <h3>Adicionar lançamentos</h3>
+            <button onclick="onCloseModal()" class="small">Fechar</button>
+          </div>
+
+          <form id="form-register">
+               
+            <label class="mt large" for="input-title">Titulo:</label>
+            <input
+            class="mt-smaller"
+             id="input-title"
+             placeholder="Ex conta d'agua" 
+             type="text"
+             name="input-title"
+             required >
+             
+            <label class="mt large" for="input-value">
+                   Valor:</label>
+            <input 
+            class="mt-smaller"
+            id="input-value"
+            placeholder="R$ 0,00"
+            type="text"
+            name="input-value"
+            required >
+
+            <label class="mt large" for="input-date">
+               Data:</label>
+             <input 
+             class="mt-smaller"
+             id="input-date"
+             placeholder="@email.exemplo"
+             type="date"
+             name="input-date"
+             required >
+
+             <label class="mt large" for="input-category">
+               Categoria:</label>
+        <select 
+        class="mt-smaller"
+        id="category"
+        name="input-category"
+        required >
+      
+         <option value=""> Nome da categoria</option>
+      
+      </select>
+            <button type="submit" class="mt large 
+            full-width">Adicionar</button>
+
+            </form>
+      </div>
+   </div>
 </body>
 </html>
