@@ -1,7 +1,64 @@
+const onDeleteItem = async (id) => {
+ try {
+   const email = localStorage.getItem("@WalletApp:UserEmail")
+    // const  email = localStorage.getItem("@WallerApp:EmailUser")
+
+    await fetch(`https://mp-wallet-app-api.herokuapp.com/finances/${id}`, {
+
+      method: 'DELETE',
+      headers: {
+         email: email
+      }
+
+      })
+
+      userFinances()
+ } catch (error) {
+   alert("Erro ao deletar item!")
+ }
+   
+}
+
 const RenderTable = (data) => {
 
    const table = document.getElementById("table-finances")
-   table.innerHTML = ""
+   table.innerHTML = " "
+
+   const tableHeader = document.createElement("tr")
+ 
+      // title header 
+       const tableTitle = document.createElement("th")
+       const tableTitleText = document.createTextNode("Título")
+       tableTitle.appendChild(tableTitleText)
+       tableHeader.appendChild(tableTitle)
+
+       // category header 
+       const categoryTitleElement = document.createElement("th")
+       const categoryTitleText = document.createTextNode("Categoria")
+       categoryTitleElement.appendChild(categoryTitleText)
+       tableHeader.appendChild(categoryTitleElement)
+
+      // date header
+       const dateTitleElement = document.createElement("th")
+       const dateTitleText = document.createTextNode("Data")
+       dateTitleElement.appendChild(dateTitleText)
+       tableHeader.appendChild(dateTitleElement)
+
+       // value header
+       const valueTitleElement = document.createElement("th")
+       const valueTitleText = document.createTextNode("Valor")
+       valueTitleElement.className = "center"
+       valueTitleElement.appendChild(valueTitleText)
+       tableHeader.appendChild(valueTitleElement)
+
+       // action header
+       const actionTitleElement = document.createElement("th")
+       const actionTitleText = document.createTextNode("Ação")
+       actionTitleElement.className = "right"
+       actionTitleElement.appendChild(actionTitleText)
+       tableHeader.appendChild(actionTitleElement)
+
+       table.appendChild(tableHeader)
 
    data.map ((item) => {
 
@@ -54,6 +111,8 @@ const RenderTable = (data) => {
       // delete
 
       const deleteTd = document.createElement("td")
+      deleteTd.style.cursor = "pointer"
+      deleteTd.onclick = () => onDeleteItem(item.id)
       deleteTd.className = "right"
       const deleteText = document.createTextNode("Deletar")
       deleteTd.appendChild(deleteText)

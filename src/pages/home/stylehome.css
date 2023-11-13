@@ -126,6 +126,9 @@ th.center {
 th.right {
   text-align: right;
 }
+tr {
+  height: 32px;
+}
 
 td {
   color: #7c7c7c;
