@@ -1,5 +1,7 @@
 # Wallet App
 
+<img src="src/imagens/preview.png" alt="">
+
 ## Introduction
 
 This is an finences management dashboard mada with JavaScript, HTNL and CSS. The main goal is let the the user
