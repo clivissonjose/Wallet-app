@@ -1,6 +1,6 @@
 # Wallet App
 
-<img src="src/imagens/preview.png" alt="">
+<img src="src/imagens/preview.png.png" alt="">
 
 ## Introduction
 
